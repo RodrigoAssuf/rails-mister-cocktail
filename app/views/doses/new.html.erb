@@ -1,0 +1,21 @@
+<h2><%= @cocktail.name %></h2>
+<h3>Add ingredients to your cocktail</h3>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :description %>
+  <%= f.input :ingredient_id %>
+  <%= f.submit "add an ingredient", class: "btn btn-primary" %>
+<% end %>
+
+
+<h3>Check out our Ingredients:</h3>
+<ol>
+<% ingredients_array = [] %>
+<% ingredients_list = Ingredient.all %>
+<% ingredients_list.each do |i| %>
+<% ingredients_array << i.name %>
+<% end %>
+<% ingredients_array.each do |ing| %>
+<li><p><%= ing %></p></li>
+<% end %>
+</ol>
